@@ -16,9 +16,7 @@ export default function Home() {
     try {
       const response = await fetch(`/user`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
           password,
@@ -29,15 +27,17 @@ export default function Home() {
       console.log("@APP", data);
 
       if (!data || !data.success) {
-        alert("Verifique seus dados");
+        alert(
+          "Check your credentials (try email: test@mail.com, password: 123123)"
+        );
         return;
       }
 
-      alert("Olá " + data.name);
+      alert("Hello " + data.name);
     } catch (error) {
       console.error(error);
 
-      alert("Não foi possível entrar.");
+      alert("login faile");
     }
   }
 
@@ -58,7 +58,7 @@ export default function Home() {
       />
 
       <TouchableOpacity style={styles.button} onPress={handleSignIn}>
-        <Text style={styles.text}>Entrar</Text>
+        <Text style={styles.text}>Sign in</Text>
       </TouchableOpacity>
     </View>
   );
